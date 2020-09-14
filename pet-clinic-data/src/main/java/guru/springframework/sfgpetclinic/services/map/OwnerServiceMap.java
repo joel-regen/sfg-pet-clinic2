@@ -13,7 +13,7 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
     private Map<String, Owner> mapByLastName = new HashMap<>();
     @Override
     public Owner save(Owner owner) {
-        map.put(owner.getId(), owner);
+        super.save(owner);
         mapByLastName.put(owner.getLastName(), owner);
         return owner;
     }
@@ -23,28 +23,4 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
         return mapByLastName.get(lastName);
     }
 
-//    @Override
-//    public Set<Owner> findAll() {
-//        return super.findAll();
-//    }
-//
-//    @Override
-//    public Owner findById(Long id) {
-//        return super.findById(id);
-//    }
-//
-//    @Override
-//    public Owner save(Long id, Owner owner) {
-//        return super.save(id, owner);
-//    }
-//
-//    @Override
-//    public void deleteById(Long id) {
-//        super.deleteById(id);
-//    }
-//
-//    @Override
-//    public void delete(Owner owner) {
-//        super.delete(owner);
-//    }
 }
