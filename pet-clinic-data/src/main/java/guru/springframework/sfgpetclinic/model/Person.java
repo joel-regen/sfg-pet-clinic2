@@ -4,6 +4,12 @@ public class Person extends BaseEntity{
     private String firstName;
     private String lastName;
 
+    public Person(){}
+    public Person(Long id, String firstName, String lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        super.setId(id);
+    }
     public String getFirstName() {
         return firstName;
     }
@@ -19,4 +25,5 @@ public class Person extends BaseEntity{
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
 }

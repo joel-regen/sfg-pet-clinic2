@@ -1,16 +1,25 @@
 package guru.springframework.sfgpetclinic.services.map;
 
 import guru.springframework.sfgpetclinic.model.Owner;
-import guru.springframework.sfgpetclinic.services.CrudService;
+import guru.springframework.sfgpetclinic.services.OwnerService;
 
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
-public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements CrudService<Owner, Long> {
 
+public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
+
+    private Map<String, Owner> mapByLastName = new HashMap<>();
     @Override
     public Owner save(Owner owner) {
         map.put(owner.getId(), owner);
+        mapByLastName.put(owner.getLastName(), owner);
         return owner;
+    }
+
+    @Override
+    public Owner findByLastName(String lastName) {
+        return mapByLastName.get(lastName);
     }
 
 //    @Override
